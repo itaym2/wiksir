@@ -11,7 +11,7 @@ defmodule Wiksir do
       # Start the endpoint when the application starts
       supervisor(Wiksir.Endpoint, []),
       # Start your own worker by calling: Wiksir.Worker.start_link(arg1, arg2, arg3)
-       worker(Wiksir.Entries.Cache, []),
+       worker(Wiksir.Entries.Retriever, [repo_url: "https://github.com/itaym2/docs.git"]),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
