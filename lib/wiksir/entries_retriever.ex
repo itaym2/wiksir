@@ -32,7 +32,7 @@ defmodule Wiksir.Entries.Retriever do
 
   defp load_entries() do
     files = File.ls!(@entries_dir)
-              |> Enum.filter(fn name -> String.ends_with?(name, ".md") end)
+              |> Enum.filter(&String.ends_with?(&1, ".md"))
     
     Logger.debug inspect files
       
