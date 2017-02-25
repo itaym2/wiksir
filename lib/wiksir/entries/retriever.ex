@@ -24,6 +24,7 @@ defmodule Wiksir.Entries.Retriever do
 
   def handle_info(:pull, repo: repo) do
     Git.pull repo
+    
     load_entries
 
     Process.send_after(self(), :pull, @interval) # In 2 hours
@@ -33,9 +34,9 @@ defmodule Wiksir.Entries.Retriever do
   defp load_entries() do
     files = File.ls!(@entries_dir)
               |> Enum.filter(&String.ends_with?(&1, ".md"))
+              |> Enum.map(fn name -> {name, 0} end)
+              |> Enum.into(%{})
     
-    Logger.debug inspect files
-      
+    Wiksir.Entries.Cache.put_entries(files)
   end
-
 end
