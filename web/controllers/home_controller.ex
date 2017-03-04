@@ -1,4 +1,4 @@
-defmodule Wiksir.PageController do
+defmodule Wiksir.HomeController do
   use Wiksir.Web, :controller
 
   def index(conn, _params) do

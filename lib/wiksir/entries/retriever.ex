@@ -31,12 +31,21 @@ defmodule Wiksir.Entries.Retriever do
     {:noreply, repo: repo}
   end
 
-  defp load_entries() do
-    files = File.ls!(@entries_dir)
-              |> Enum.filter(&String.ends_with?(&1, ".md"))
-              |> Enum.map(fn name -> {name, 0} end)
-              |> Enum.into(%{})
-    
+  defp load_entries do
+    files = 
+      markdown_files
+      |> Enum.map(fn name -> {name, read_content(name)} end)
+      |> Enum.into(%{})
+
     Wiksir.Entries.Cache.put_entries(files)
+  end
+
+  defp markdown_files do
+    File.ls!(@entries_dir)
+    |> Enum.filter(&String.ends_with?(&1, ".md"))
+  end
+
+  defp read_content(file_name) do
+    Path.join([@entries_dir, file_name]) |> File.read!
   end
 end

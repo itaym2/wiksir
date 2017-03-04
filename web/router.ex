@@ -16,7 +16,8 @@ defmodule Wiksir.Router do
   scope "/", Wiksir do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    get "/", HomeController, :index
+    get "/entries", EntriesController, :index
   end
 
   # Other scopes may use custom stacks.

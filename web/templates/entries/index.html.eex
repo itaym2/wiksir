@@ -1,0 +1,4 @@
+
+  <%= for entry <- @entries do  %>
+    <h1><%= elem(entry, 0) %></h1>
+  <%= end %>
