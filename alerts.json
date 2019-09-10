@@ -2,9 +2,9 @@
 {
   "hosts": {
     "some-api": {
-      "display_name": "Api"
+      "display_name": "Api2"
     },
-    "some-other-api-3": {
+    "some-other-api-4": {
       "display_name": "Messaging Storage"
     }
   }
