@@ -1,0 +1,11 @@
+  
+{
+  "hosts": {
+    "some-api": {
+      "display_name": "Api"
+    },
+    "some-other-api-2": {
+      "display_name": "Messaging Storage"
+    }
+  }
+}
